@@ -8,4 +8,4 @@ src/.DS_Store
 # raylib
 
 /lib
-/include
+/include/raylib

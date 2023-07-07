@@ -3,7 +3,12 @@
 // Licensed under the MIT license. See LICENSE.md file in the project root for details.
 //
 
+
+
 #include <iostream>
+
+#include "../include/paddle/paddle.hpp"
+#include "gui/gui.hpp"
 
 // raylib API
 #include "../include/raylib/raylib.h"
@@ -12,18 +17,13 @@ using namespace std;
 
 int main() {
     // initialization of program
-    const int screenWidth = 858;
-    const int screenHeight = 525;
-    const char* TITLE = "Game";
+    const char* TITLE = "Pong";
+    
+    // paddle positions
+    int playerone = SCREEN_HEIGHT / 2;
+    int playertwo = SCREEN_HEIGHT / 2;
 
-    int square_x = 100;
-    int square_y = 100;
-    int square_speed_x = 5;
-    int square_speed_y = 5;
-    int square_width = 10;
-    int square_height = 10;
-
-    InitWindow(screenWidth, screenHeight, TITLE);
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, TITLE);
     SetTargetFPS(60);
     
     // if uncommented, stop program from exiting by pressing ESC key
@@ -31,20 +31,18 @@ int main() {
 
     // game loop and updates
     while (!WindowShouldClose()) {
+        DrawPaddle DrawPaddleObj;
+        Input InputObj;
+        
         BeginDrawing();
         ClearBackground(BLACK);
-        square_x += square_speed_x;
-        square_y += square_speed_y;
 
-        if(square_x + square_width >= screenWidth  || square_x - square_width <= 0) {
-            square_speed_x *= -1;
-        }
+        DrawPaddleObj.drawPaddle(15, playerone);
+        playerone += InputObj.playerControls("playerone", playerone);
 
-        if(square_y + square_height >= screenHeight  || square_y - square_height <= 0) {
-            square_speed_y *= -1;
-        }
+        DrawPaddleObj.drawPaddle(SCREEN_WIDTH - 25, playertwo);
+        playertwo += InputObj.playerControls("playertwo", playertwo);
 
-        DrawRectangle(square_x, square_y, 10, 10, WHITE);
         EndDrawing();
     }
 
