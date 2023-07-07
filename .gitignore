@@ -1,0 +1,11 @@
+# folders that do not need to be commited to GitHub
+
+/.vscode
+/.DS_Store
+src/.DS_Store
+/bin
+
+# raylib
+
+/lib
+/include
