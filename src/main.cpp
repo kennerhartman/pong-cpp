@@ -120,8 +120,8 @@ int main() {
             ball.y = resetPong("ball_ypos");
             pong_speed_y = resetPong("0");
 
-            playerone = (SCREEN_HEIGHT / 2) - 25;
-            playertwo = (SCREEN_HEIGHT / 2) - 25;
+            playerone = (SCREEN_HEIGHT / 2);
+            playertwo = (SCREEN_HEIGHT / 2);
         } else if (ball.x <= 0) {
             ball.x = resetPong("ball_xpos");
             ball.y = resetPong("ball_ypos");
