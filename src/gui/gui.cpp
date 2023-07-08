@@ -8,3 +8,12 @@
 // screen dimensions
 int SCREEN_HEIGHT = 525;
 int SCREEN_WIDTH = 858;
+
+/* 
+    TODO: Create interface and score board
+
+    extern scoreForPlayerOne in gui.hpp
+    extern scoreForPlayerTwo in gui.hpp
+
+    divider and "paint" it to "canvus" in 'src/main.cpp'
+*/

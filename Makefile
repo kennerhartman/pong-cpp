@@ -18,10 +18,12 @@ endif
 
 myInclude = src/gui/gui.cpp include/paddle/paddle.cpp
 
+# must include '-static' for Windows computers that do not have MingGW 
 all: | $(dir_target)
 	$(CXX) \
 	src/main.cpp -o $(directory)/main \
 	-O2 -Wall -Wno-missing-braces \
+	-static \
 	$(myInclude) \
 	$(raylib)
 
