@@ -7,7 +7,7 @@
 #include "../../src/gui/gui.hpp"
 #include "../raylib/raylib.h"
 
-#include <iostream>
+// #include <iostream>
 #include <string>
 
 paddle paddleRec;

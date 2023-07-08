@@ -3,13 +3,9 @@
 // Licensed under the MIT license. See LICENSE.md file in the project root for details.
 //
 
-#include <iostream>
-#include <math.h>
-
 // my API 
 #include "../include/paddle/paddle.hpp"
 #include "gui/gui.hpp"
-
 
 // raylib API
 #include "../include/raylib/raylib.h"
@@ -34,6 +30,10 @@ int main() {
     int pong_speed_y = 0;
     Rectangle pong = { static_cast<float>(pong_xpos), static_cast<float>(pong_ypos), 10, 10 };
 
+    DrawPaddle DrawPaddleObj;
+    GUI GUIObj;
+    Input InputObj;
+
     // initialization of program
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, TITLE);
     SetTargetFPS(60);
@@ -43,10 +43,6 @@ int main() {
 
     // game loop and updates
     while (!WindowShouldClose()) {
-        DrawPaddle DrawPaddleObj;
-        GUI GUIObj;
-        Input InputObj;
-        
         // begin drawing the "canvus"
         BeginDrawing();
         ClearBackground(BLACK);
