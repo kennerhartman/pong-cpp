@@ -49,6 +49,7 @@ int main() {
         BeginDrawing();
         ClearBackground(BLACK);
 
+        // to turn on debug mode, change 'false' to 'true'
         bool debug = debugMode(ball, pong_speed_y, false);
 
         // draw pong and initiate speed 
@@ -106,8 +107,8 @@ int main() {
             pong_speed_x *= -1.0;
         }
 
-        // ball collision checks with top and bottom of screen
-        if (ball.y >= SCREEN_HEIGHT) {
+        // ball collision checks with bottom and top of screen
+        if (ball.y + 10 >= SCREEN_HEIGHT) {
             pong_speed_y *= -1;
         } else if (ball.y <= 0) {
             pong_speed_y *= -1;
