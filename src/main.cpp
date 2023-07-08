@@ -6,7 +6,7 @@
 #include <iostream>
 #include <math.h>
 
-
+// my API 
 #include "../include/paddle/paddle.hpp"
 #include "gui/gui.hpp"
 
@@ -20,18 +20,20 @@ int resetPong(string whatToReturn);
 
 int main() {
     // initialization of program
-    const char* TITLE = "Pong";
+    const char* TITLE = "Pong C++";
     
     // paddle positions
     int playerone = (SCREEN_HEIGHT / 2);
     int playertwo = (SCREEN_HEIGHT / 2);
 
+    // create ball, set ball positions and speed
     int ballxpos = (SCREEN_WIDTH / 2);
     int ballypos = (SCREEN_HEIGHT / 2);
     int pong_speed_x = 9;
     int pong_speed_y = 0;
     Rectangle ball = { static_cast<float>(ballxpos), static_cast<float>(ballypos), 10, 10 };
 
+    // initialization of program
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, TITLE);
     SetTargetFPS(60);
     
@@ -42,22 +44,27 @@ int main() {
     while (!WindowShouldClose()) {
         DrawPaddle DrawPaddleObj;
         Input InputObj;
+        
+        // begin drawing the "canvus"
         BeginDrawing();
         ClearBackground(BLACK);
 
-        bool debug = debugMode(ball, pong_speed_y, true);
+        bool debug = debugMode(ball, pong_speed_y, false);
 
+        // draw pong and initiate speed 
+        DrawRectangleRec(ball, WHITE);
         ball.x += pong_speed_x;
         ball.y += pong_speed_y;
-        
-        DrawRectangleRec(ball, WHITE);
 
+        // player one paddle creationg and movement 
         DrawPaddleObj.drawPaddle(15, playerone, debug);
         playerone += InputObj.playerControls("playerone", playerone);
 
+        // player one paddle collisions with ball
         if (CheckCollisionRecs(ball, paddleTop)) {
             pong_speed_y += GetRandomValue(1, 4);
 
+            // stop the pong from having a speed of 0
             if (pong_speed_y == 0) {
                 pong_speed_y += GetRandomValue(4, 7);
             }
@@ -66,6 +73,7 @@ int main() {
         } else if (CheckCollisionRecs(ball, paddleBottom)) {
             pong_speed_y -= GetRandomValue(1, 4);
 
+            // stop the pong from having a speed of 0
             if (pong_speed_y == 0) {
                 pong_speed_y -= GetRandomValue(4, 7);
             }
@@ -73,12 +81,15 @@ int main() {
             pong_speed_x *= -1.0;
         }
 
+        // player two paddle creationg and movement 
         DrawPaddleObj.drawPaddle(SCREEN_WIDTH - 25, playertwo, debug);
         playertwo += InputObj.playerControls("playertwo", playertwo);
         
+        // player two paddle collisions with ball 
         if (CheckCollisionRecs(ball, paddleTop)) {
             pong_speed_y += GetRandomValue(1, 4);
 
+            // stop the pong from having a speed of 0
             if (pong_speed_y == 0) {
                 pong_speed_y += GetRandomValue(4, 7);
             }
@@ -87,6 +98,7 @@ int main() {
         } else if (CheckCollisionRecs(ball, paddleBottom)) {
             pong_speed_y -= GetRandomValue(1, 4);
 
+            // stop the pong from having a speed of 0
             if (pong_speed_y == 0) {
                 pong_speed_y += GetRandomValue(4, 7);
             }
@@ -94,12 +106,14 @@ int main() {
             pong_speed_x *= -1.0;
         }
 
+        // ball collision checks with top and bottom of screen
         if (ball.y >= SCREEN_HEIGHT) {
             pong_speed_y *= -1;
         } else if (ball.y <= 0) {
             pong_speed_y *= -1;
         }
 
+        // reset ball on score
         if (ball.x >= SCREEN_WIDTH) {
             ball.x = resetPong("ball_xpos");
             ball.y = resetPong("ball_ypos");
