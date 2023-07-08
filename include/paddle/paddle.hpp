@@ -7,7 +7,6 @@
 
 #include <string>
 #include "../raylib/raylib.h"
-#include "../../src/gui/gui.hpp"
 
 extern Rectangle paddleTop;
 extern Rectangle paddleBottom;
@@ -15,7 +14,7 @@ extern Rectangle paddleBottom;
 struct paddle {
     int posx;
     int posy;
-    float height = 27.5;
+    float height = 29.5;
     int width = 10;
 };
 

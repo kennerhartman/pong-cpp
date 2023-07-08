@@ -1,5 +1,6 @@
 # output directory of executable
 directory = bin
+exeName = pong
 
 # check whether the target directory $(directory) is present
 dir_target = $(directory)-$(wildcard $(directory))
@@ -10,10 +11,10 @@ dir_absent = $(directory)-
 # set the proper flags for 'raylib' for the proper platforms (Windows or MacOS)
 ifeq ($(OS), Windows_NT)
 	CXX = g++
-	raylib = -static -L lib/* -lraylib -lopengl32 -lgdi32 -lwinmm
+	raylib = -static -mwindows -L lib/* -lraylib -lopengl32 -lgdi32 -lwinmm
 else
 	CXX = g++ -std=c++20
-	raylib = -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL lib/raylib/libraylib.a
+	raylib = -mwindows -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL lib/raylib/libraylib.a
 endif
 
 myInclude = src/gui/gui.cpp include/paddle/paddle.cpp
@@ -21,7 +22,7 @@ myInclude = src/gui/gui.cpp include/paddle/paddle.cpp
 # must include '-static' for Windows computers that do not have MingGW 
 all: | $(dir_target)
 	$(CXX) \
-	src/main.cpp -o $(directory)/main \
+	src/main.cpp -o $(directory)/$(exeName) \
 	-O2 -Wall -Wno-missing-braces \
 	$(myInclude) \
 	$(raylib)

@@ -4,6 +4,7 @@
 //
 
 #include "paddle.hpp"
+#include "../../src/gui/gui.hpp"
 #include "../raylib/raylib.h"
 
 #include <iostream>
@@ -30,7 +31,7 @@ void DrawPaddle::drawPaddle(int posx, int posy, bool debugMode) {
     paddleTop.y = posy;
 
     paddleBottom.x = posx;
-    paddleBottom.y = posy - 27.5;
+    paddleBottom.y = posy - 29.5;
 
     DrawRectangleRec(paddleTop, WHITE);
 
@@ -46,37 +47,37 @@ int Input::playerControls(std::string player, int posy) {
     paddle paddle;
 
     if (player == "playerone") {
-        // if 'posy >= 0' is TRUE, then playerone can move up
-        if (posy >= 0) { 
+        // if 'posy >= BORDER_HEIGHT * 3.8 (38px)' is TRUE, then playerone can move up
+        if (posy >= BORDER_HEIGHT * 3.8) {  // hardcoded the "collision" because this is a simple game
             if (IsKeyDown(KEY_W)) {
                 // std::cout << posy << "\n";
-                return (-7);
+                return (-9);
             }
         } 
 
         // if 'posy + paddle.height <= SCREEN_HEIGHT' is TRUE, then playerone can move down
-        if (posy + paddle.height <= SCREEN_HEIGHT) {
+        if (posy + paddle.height <= SCREEN_HEIGHT - BORDER_HEIGHT) {
             if (IsKeyDown(KEY_S)) {
                 // std::cout << posy << "\n";
-                return (7);
+                return (9);
             }
         }
     }
 
-    // if 'posy >= 0' is TRUE, then playertwo can move up
+    // if 'posy >= BORDER_HEIGHT * 3.8 (38px)' is TRUE, then playerone can move up
     if (player == "playertwo") {
-        if (posy >= 0) { 
+        if (posy >= BORDER_HEIGHT * 3.8) { // hardcoded the "collision" because this is a simple game
             if (IsKeyDown(KEY_UP)) {
                 // std::cout << posy << "\n";
-                return (-7);
+                return (-9);
             }
         } 
 
         // if 'posy + paddle.height <= SCREEN_HEIGHT' is TRUE, then playertwo can move down
-        if (posy + paddle.height <= SCREEN_HEIGHT) {
+        if (posy + paddle.height <= SCREEN_HEIGHT - BORDER_HEIGHT) {
             if (IsKeyDown(KEY_DOWN)) {
                 // std::cout << posy << "\n";
-                return (7);
+                return (9);
             }
         }
     }

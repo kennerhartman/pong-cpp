@@ -5,9 +5,17 @@
 
 #ifndef _GUI_HPP
 
-// screen height
-extern int SCREEN_HEIGHT;
-// screen width
-extern int SCREEN_WIDTH;
+extern int SCREEN_HEIGHT; // screen height
+extern int SCREEN_WIDTH; // screen width
+extern int BORDER_WIDTH; // border width
+extern int BORDER_HEIGHT; // border height
+
+class GUI {
+    public:
+        void board();
+    
+    private:
+        void border();
+};
 
 #endif
