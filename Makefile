@@ -10,7 +10,7 @@ dir_absent = $(directory)-
 # set the proper flags for 'raylib' for the proper platforms (Windows or MacOS)
 ifeq ($(OS), Windows_NT)
 	CXX = g++
-	raylib = -L lib/* -lraylib -lopengl32 -lgdi32 -lwinmm
+	raylib = -static -L lib/* -lraylib -lopengl32 -lgdi32 -lwinmm
 else
 	CXX = g++ -std=c++20
 	raylib = -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL lib/raylib/libraylib.a
@@ -23,7 +23,6 @@ all: | $(dir_target)
 	$(CXX) \
 	src/main.cpp -o $(directory)/main \
 	-O2 -Wall -Wno-missing-braces \
-	-static \
 	$(myInclude) \
 	$(raylib)
 
