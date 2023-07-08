@@ -4,16 +4,20 @@
 #include "../raylib/raylib.h"
 #include "../../src/gui/gui.hpp"
 
+extern Rectangle paddleTop;
+extern Rectangle paddleBottom;
+
 struct paddle {
-    int height = 55;
-    int width = 10;
     int posx;
+    int posy;
+    float height = 27.5;
+    int width = 10;
 };
 
 class DrawPaddle {
     public:
         // draw a paddle based on a x position and y position.  
-        void drawPaddle(int posx, int posy);
+        void drawPaddle(int posx, int posy, bool debugMode);
 };
 
 class Input {
