@@ -1,6 +1,16 @@
 # output directory of executable
 directory = bin
-exeName = pong
+
+# if you supply 'mode=debug', the debug version of the application will be outputted.
+# if you do not supply any arguments, (or do not type 'mode' or 'debug' exactly),
+# the output will be the regular application. 
+ifeq ($(mode), debug) 
+	exeName = debug_pong
+	CXX_FILE = src/debugVersion.cpp
+else
+	exeName = pong
+	CXX_FILE = src/main.cpp
+endif
 
 # check whether the target directory $(directory) is present
 dir_target = $(directory)-$(wildcard $(directory))
@@ -22,7 +32,7 @@ myInclude = src/gui/gui.cpp include/paddle/paddle.cpp
 # must include '-static' for Windows computers that do not have MingGW 
 all: | $(dir_target)
 	$(CXX) \
-	src/main.cpp -o $(directory)/$(exeName) \
+	$(CXX_FILE) -o $(directory)/$(exeName) \
 	-O2 -Wall -Wno-missing-braces \
 	$(myInclude) \
 	$(raylib)

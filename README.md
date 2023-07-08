@@ -6,6 +6,8 @@ What game is better to recreate than Pong?  This is my implementation of Pong fo
 
 Ensure you have a C++ compiler installed (I am using GNU G++) and GNU Make installed.  Clone this project into a directory.  Follow the steps in [#External API](#external-api) to install Raylib.  Once you are done, run ```make all``` and an executable will outputed to /bin in the root of the project.
 
+If you want the debug version, run ```make all mode=debug```.  If not, or the incorrect arguments are supplied, you will get the regular version.
+
 # Playing
 
 Player one: W (up) and S (down)
