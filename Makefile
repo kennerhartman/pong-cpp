@@ -1,5 +1,6 @@
 # output directory of executable
 directory = bin
+assets = assets/pong.rc.data
 
 # if you supply 'mode=debug', the debug version of the application will be outputted.
 # if you do not supply any arguments, (or do not type 'mode' or 'debug' exactly),
@@ -18,13 +19,14 @@ dir_present = $(directory)-$(directory)
 dir_absent = $(directory)-
 
 # MacOS throws errors if a standard is not defined
-# set the proper flags for 'raylib' for the proper platforms (Windows or MacOS)
+# set the proper flags for 'raylib' for the proper platforms (Windows or MacOS).
+# -mwindows disables console and opens only the GUI application (Windows only)
 ifeq ($(OS), Windows_NT)
 	CXX = g++
 	raylib = -static -mwindows -L lib/* -lraylib -lopengl32 -lgdi32 -lwinmm
 else
 	CXX = g++ -std=c++20
-	raylib = -mwindows -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL lib/raylib/libraylib.a
+	raylib = -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL lib/raylib/libraylib.a
 endif
 
 myInclude = src/gui/gui.cpp include/paddle/paddle.cpp
@@ -34,6 +36,7 @@ all: | $(dir_target)
 	$(CXX) \
 	$(CXX_FILE) -o $(directory)/$(exeName) \
 	-O2 -Wall -Wno-missing-braces \
+	$(assets) \
 	$(myInclude) \
 	$(raylib)
 
