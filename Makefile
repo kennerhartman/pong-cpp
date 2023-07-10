@@ -1,7 +1,7 @@
-//
-// Copyright (c) 2023 by Kenner Hartman. All rights reserved.
-// Licensed under the MIT license. See LICENSE.md file in the project root for details.
-//
+#
+# Copyright (c) 2023 by Kenner Hartman. All rights reserved.
+# Licensed under the MIT license. See LICENSE.md file in the project root for details.
+#
 
 # output directory of executable
 directory = bin
