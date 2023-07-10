@@ -66,7 +66,7 @@ void twoPlayerPong() {
         pong.y += pong_speed_y;
 
         // player one paddle creationg and movement 
-        DrawPaddleObj.drawPaddle(15, playerone, debug);
+        DrawPaddleObj.drawPaddle(15, playerone, NULL);
         playerone += InputObj.playerControls("playerone", playerone);
 
         // player one paddle collisions with pong
@@ -91,7 +91,7 @@ void twoPlayerPong() {
         }
 
         // player two paddle creationg and movement 
-        DrawPaddleObj.drawPaddle(SCREEN_WIDTH - 25, playertwo, debug);
+        DrawPaddleObj.drawPaddle(SCREEN_WIDTH - 25, playertwo, NULL);
         playertwo += InputObj.playerControls("playertwo", playertwo);
         
         // player two paddle collisions with pong 
