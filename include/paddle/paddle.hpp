@@ -6,6 +6,8 @@
 #ifndef _PADDLE_HPP
 
 #include <string>
+
+// raylib API
 #include "../raylib/raylib.h"
 
 extern Rectangle paddleTop;

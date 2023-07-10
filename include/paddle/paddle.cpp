@@ -3,12 +3,14 @@
 // Licensed under the MIT license. See LICENSE.md file in the project root for details.
 //
 
+#include <string>
+
+// my API 
 #include "paddle.hpp"
 #include "../../src/gui/gui.hpp"
-#include "../raylib/raylib.h"
 
-// #include <iostream>
-#include <string>
+// raylib API
+#include "../raylib/raylib.h"
 
 paddle paddleRec;
 Rectangle paddleTop = {
@@ -40,7 +42,6 @@ void DrawPaddle::drawPaddle(int posx, int posy, bool debugMode) {
     } else {
         DrawRectangleRec(paddleBottom, WHITE);
     }
-
 }
 
 int Input::playerControls(std::string player, int posy) {

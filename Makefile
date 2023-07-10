@@ -37,7 +37,7 @@ else
 	raylib = -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL lib/raylib/libraylib.a
 endif
 
-myInclude = src/gui/gui.cpp include/paddle/paddle.cpp
+myInclude = src/gui/gui.cpp src/game/game.cpp include/paddle/paddle.cpp
 
 all: | $(dir_target)
 	$(CXX) \
