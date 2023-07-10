@@ -14,11 +14,28 @@ using namespace std;
 
 bool debugMode(Rectangle pong, int pong_speed_y, bool debugModeIsOn);
 int resetPong(string whatToReturn);
+void twoPlayerPong();
 
 int main() {
     // initialization of program
     const char* TITLE = "Pong C++";
+
+    // initialization of program
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, TITLE);
+    SetTargetFPS(60);
     
+    // TODO: Main menu and single-player
+
+    // this function handles the logic of the two-player game, as well as game loop and updates
+    twoPlayerPong();
+
+    // deinitialization of program
+    CloseWindow();
+
+    return 0;
+}
+
+void twoPlayerPong() {
     // paddle positions
     int playerone = (SCREEN_HEIGHT / 2);
     int playertwo = (SCREEN_HEIGHT / 2);
@@ -26,31 +43,23 @@ int main() {
     // create pong, set pong positions and speed
     int pong_xpos = (SCREEN_WIDTH / 2);
     int pong_ypos = (SCREEN_HEIGHT / 2);
-    int pong_speed_x = 9;
+    int pong_speed_x = -9; // ball goes to the left of the screen (paddle of player one)
     int pong_speed_y = 0;
     Rectangle pong = { static_cast<float>(pong_xpos), static_cast<float>(pong_ypos), 10, 10 };
 
+    // objects for internal API methods
     DrawPaddle DrawPaddleObj;
     GUI GUIObj;
     Input InputObj;
 
-    // initialization of program
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, TITLE);
-    SetTargetFPS(60);
-    
-    // if uncommented, stop program from exiting by pressing ESC key
-    // SetExitKey(KEY_NULL);
-
-    // game loop and updates
-    while (!WindowShouldClose()) {
+    // game loop and updates for this function
+    while (true) {
         // begin drawing the "canvus"
         BeginDrawing();
         ClearBackground(BLACK);
         
         // draw GUI
         GUIObj.board();
-
-        // TODO: draw scoreboard from gui.hpp
 
         // to turn on debug mode, change 'false' to 'true'
         bool debug = debugMode(pong, pong_speed_y, true);
@@ -118,29 +127,33 @@ int main() {
         }
 
         // reset pong on score
-        if (pong.x >= SCREEN_WIDTH) {
+        if (pong.x >= SCREEN_WIDTH) { // left side of the screen, right side scores
             pong.x = resetPong("pong_xpos");
             pong.y = resetPong("pong_ypos");
             pong_speed_y = resetPong("0");
+            GUIObj.score("one");
 
             playerone = (SCREEN_HEIGHT / 2);
             playertwo = (SCREEN_HEIGHT / 2);
-        } else if (pong.x <= 0) {
+        } 
+        else if (pong.x <= 0) { // right side of the screen, left side scores
             pong.x = resetPong("pong_xpos");
             pong.y = resetPong("pong_ypos");
             pong_speed_y = resetPong("0");
+            GUIObj.score("two");
 
             playerone = (SCREEN_HEIGHT / 2);
             playertwo = (SCREEN_HEIGHT / 2);
         }
 
+        GUIObj.displayScore();
+
         EndDrawing();
+
+        if (IsKeyDown(KEY_ESCAPE)) { // exit loop which will then close window
+            break;
+        }
     }
-
-    // deinitialization of program
-    CloseWindow();
-
-    return 0;
 }
 
 int resetPong(string whatToReturn) {

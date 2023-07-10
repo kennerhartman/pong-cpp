@@ -14,7 +14,7 @@ BEGIN
       VALUE "FileVersion", "1.0.0"
       VALUE "InternalName", "pong by Kenner Hartman"
       VALUE "LegalCopyright", "Copyright (c) 2023 Kenner Hartman"
-      //VALUE "OriginalFilename", "raylib_app.exe"
+      //VALUE "OriginalFilename", "pong"
       VALUE "ProductName", "pong by Kenner Hartman"
       VALUE "ProductVersion", "0.1.0"
     END
