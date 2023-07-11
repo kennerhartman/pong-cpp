@@ -47,6 +47,20 @@ all: | $(dir_target)
 	$(myInclude) \
 	$(raylib)
 
+# it is important that you pass in $(directory), as defined at the top of the Makefile, 
+# so the shell script can know which directory to create the app bundle for macOS.  
+# I use /bin, someone else might use /build
+#
+# This command will first compile $(directory)/$(exeName) to make sure the executable is
+# up to date.  Then we will run a shell script to bundle the executable into an app.
+shell = zsh
+script = ./bundle.sh $(directory)
+macOSBundle: 
+	@ echo
+	@ echo "Compiling $(directory)/$(exeName) then bundling as an app..."
+	@ make all
+	$(shell) $(script)
+
 # if target directory $(directory) is present, echo "Folder $(directory) exists"
 $(dir_present):
 	@echo "Folder '$(directory)' already exists"

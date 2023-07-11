@@ -9,3 +9,9 @@
 
 /lib
 /include/raylib
+
+# executables and app bundles
+
+**.app
+**.out
+**.exe
