@@ -97,7 +97,7 @@ void Games::twoPlayerPong(bool debugMode) {
         }
 
         // pong collision checks with bottom and top of screen
-        if (pong.y >= SCREEN_HEIGHT - BORDER_HEIGHT) {
+        if (pong.y >= SCREEN_HEIGHT - BORDER_HEIGHT / 0.65) {
             pong_speed_y *= -1;
         } else if (pong.y <= BORDER_HEIGHT) {
             pong_speed_y *= -1;

@@ -42,18 +42,20 @@ int main() {
     };
 
     // load textures from "sprite sheets"
-    Texture2D twoPlayer = LoadTextureFromImage(twoPlayerImage); 
+    Texture2D twoPlayerButton = LoadTextureFromImage(twoPlayerImage); 
     Texture2D exitButton = LoadTextureFromImage(exitImage); 
 
     // game loop and updates
     while(!WindowShouldClose()) { 
         BeginDrawing();
             DrawText("pong", (SCREEN_WIDTH / 2) - 65, (SCREEN_HEIGHT - SCREEN_HEIGHT) + 50, 55, WHITE);
-            int ShouldBreakLoop = GUIObj.menu(exitButton, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 39, "EXIT", false); // button for exiting game
-            GUIObj.menu(twoPlayer, SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 2) - 39, "2P", false); // button for starting 2P game
+            int shouldBreakLoop = GUIObj.menu(exitButton, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 39, "EXIT", false); // button for exiting game
+            GUIObj.menu(twoPlayerButton, SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 2) - 39, "2P", false); // button for starting 2P game
         EndDrawing();
 
-        if (ShouldBreakLoop == 1) {
+        if (shouldBreakLoop == 1) {
+            UnloadTexture(twoPlayerButton);
+            UnloadTexture(exitButton);
             break;
         }
     }
