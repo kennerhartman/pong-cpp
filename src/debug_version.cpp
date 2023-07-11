@@ -28,8 +28,8 @@ int main() {
         .data = TWO_PLAYER_BUTTON_DATA,
         .width = TWO_PLAYER_BUTTON_WIDTH,
         .height = TWO_PLAYER_BUTTON_HEIGHT,
-        .format = TWO_PLAYER_BUTTON_FORMAT,
-        .mipmaps = 1
+        .mipmaps = 1,
+        .format = TWO_PLAYER_BUTTON_FORMAT
     };
 
     // "sprite sheet" for 'EXIT' button
@@ -37,8 +37,8 @@ int main() {
         .data = EXIT_BUTTON_DATA,
         .width = EXIT_BUTTON_WIDTH,
         .height = EXIT_BUTTON_HEIGHT,
-        .format = EXIT_BUTTON_FORMAT,
-        .mipmaps = 1
+        .mipmaps = 1,
+        .format = EXIT_BUTTON_FORMAT
     };
 
     // load textures from "sprite sheets"
