@@ -139,7 +139,7 @@ bool GUI::debugMode(Rectangle pong, int pong_speed_y, bool debugModeIsOn) {
         DrawText(pong_y_pos, 125, SCREEN_HEIGHT - 25, 15, RED);
 
         // frame time   
-        DrawFPS(SCREEN_WIDTH - 77, SCREEN_HEIGHT - 25, WHITE);
+        DrawFPS(SCREEN_WIDTH - 77, SCREEN_HEIGHT - 25);
 
         return true;
     }
