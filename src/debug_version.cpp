@@ -8,6 +8,7 @@
 #include "gui/gui.hpp"
 
 // "textures" for buttons
+#include "../resources/textures_binary/one_player_button.hpp"
 #include "../resources/textures_binary/two_player_button.hpp"
 #include "../resources/textures_binary/exit_button.hpp"
 
@@ -22,6 +23,15 @@ int main() {
     // initialization of program
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, TITLE);
     SetTargetFPS(60);
+
+    // "sprite sheet" for '1P' button
+    Image onePlayerImage = {
+        .data = ONE_PLAYER_BUTTON_DATA,
+        .width = ONE_PLAYER_BUTTON_WIDTH,
+        .height = ONE_PLAYER_BUTTON_HEIGHT,
+        .mipmaps = 1,
+        .format = ONE_PLAYER_BUTTON_FORMAT
+    };
 
     // "sprite sheet" for '2P' button
     Image twoPlayerImage = {
@@ -42,6 +52,7 @@ int main() {
     };
 
     // load textures from "sprite sheets"
+    Texture2D onePlayerButton = LoadTextureFromImage(onePlayerImage); 
     Texture2D twoPlayerButton = LoadTextureFromImage(twoPlayerImage); 
     Texture2D exitButton = LoadTextureFromImage(exitImage); 
 
@@ -49,16 +60,21 @@ int main() {
     while(!WindowShouldClose()) { 
         BeginDrawing();
             DrawText("pong", (SCREEN_WIDTH / 2) - 65, (SCREEN_HEIGHT - SCREEN_HEIGHT) + 50, 55, WHITE);
-            int shouldBreakLoop = GUIObj.menu(exitButton, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 + 39, "EXIT", true); // button for exiting game
-            GUIObj.menu(twoPlayerButton, SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 2) - 39, "2P", true); // button for starting 2P game
+            
+            GUIObj.menu(onePlayerButton, SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 2) - 40, "1P", true); // button for starting 1P game
+            GUIObj.menu(twoPlayerButton, SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 2) + 45, "2P", true); // button for starting 2P game
+            int shouldBreakLoop = GUIObj.menu(exitButton, SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 2) + (exitImage.height / 3.7) + 45, "EXIT", false); // button for exiting game
         EndDrawing();
 
         if (shouldBreakLoop == 1) {
-            UnloadTexture(twoPlayerButton);
-            UnloadTexture(exitButton);
             break;
         }
     }
+
+    // unload textures
+    UnloadTexture(onePlayerButton);
+    UnloadTexture(twoPlayerButton);
+    UnloadTexture(exitButton);
 
     // deinitialization of program
     CloseWindow();

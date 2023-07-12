@@ -47,6 +47,12 @@ all: | $(dir_target)
 	$(myInclude) \
 	$(raylib)
 
+image_to_hex:
+	$(CXX) \
+	src/image_to_hex.cpp -o $(directory)/image_to_hex \
+	-O2 -Wall -Wno-missing-braces \
+	$(raylib)
+
 # it is important that you pass in $(directory), as defined at the top of the Makefile, 
 # so the shell script can know which directory to create the app bundle for macOS.  
 # I use /bin, someone else might use /build
@@ -59,7 +65,7 @@ macOSBundle:
 	@ echo
 	@ echo "Compiling $(directory)/$(exeName) then bundling as an app..."
 	@ make all
-	$(shell) $(script)
+	$(shell) $(script) $(mode)
 
 # if target directory $(directory) is present, echo "Folder $(directory) exists"
 $(dir_present):

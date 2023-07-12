@@ -8,6 +8,10 @@ Ensure you have a C++ compiler installed (I am using GNU G++) and GNU Make insta
 
 If you want the debug version, run ```make all mode=debug```.  If not, or the incorrect arguments are supplied, you will get the regular version.
 
+# App Bundle
+
+For macOS, you can create an app bundle by running ```make macOSBundle```, which will compile the program and then run a shell script.  If you want the debug version, run ```make macOSBundle mode=debug```.  If not, or the incorrect arguments are supplied, you will get the regular version.
+
 # Playing
 
 Player one: W (up) and S (down)

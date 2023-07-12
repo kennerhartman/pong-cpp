@@ -10,6 +10,7 @@
 class Games {
     public:
         void twoPlayerPong(bool debugMode);
+        void onePlayerPong(bool debugMode);
         int resetPong(std::string whatToReturn);
 };
 

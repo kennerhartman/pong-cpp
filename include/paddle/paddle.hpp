@@ -30,6 +30,7 @@ class Input {
     public:
         // player movement for players one and two
         int playerControls(std::string player, int posy);
+        int AI(int posy, struct Rectangle pong, int pong_speed_y);
 };
 
 

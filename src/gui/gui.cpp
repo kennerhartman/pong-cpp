@@ -102,7 +102,10 @@ int GUI::menu(struct Texture button, int x_pos, int y_pos, std::string action, b
     else btnState = 0;
 
     // button actions
-    if (btnAction && action == "2P") {
+    if (btnAction && action == "1P") {
+        GamesObj.onePlayerPong(debugMode);
+    }
+    else if (btnAction && action == "2P") {
         GamesObj.twoPlayerPong(debugMode);
     } else if (btnAction && action == "EXIT") {
         return 1; // break the game loop in main.cpp
