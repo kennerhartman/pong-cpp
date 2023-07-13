@@ -59,11 +59,13 @@ int main() {
     // game loop and updates
     while(!WindowShouldClose()) { 
         BeginDrawing();
+            ClearBackground(BLACK);
             DrawText("pong", (SCREEN_WIDTH / 2) - 65, (SCREEN_HEIGHT - SCREEN_HEIGHT) + 50, 55, WHITE);
 
             GUIObj.menu(onePlayerButton, SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 2) - 40, "1P", false); // button for starting 1P game
             GUIObj.menu(twoPlayerButton, SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 2) + 45, "2P", false); // button for starting 2P game
             int shouldBreakLoop = GUIObj.menu(exitButton, SCREEN_WIDTH / 2, (SCREEN_HEIGHT / 2) + (exitImage.height / 3.7) + 45, "EXIT", false); // button for exiting game
+            SetExitKey(KEY_ESCAPE);
         EndDrawing();
 
         if (shouldBreakLoop == 1) {

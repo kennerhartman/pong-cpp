@@ -14,6 +14,12 @@
 #include "../../include/raylib/raylib.h"
 
 void Games::twoPlayerPong(bool debugMode) {
+    // set exit key to null so that when we want to exit this gamemode,
+    // we will only exit the gamemode and not the program.  Once we
+    // exit this function, the exit key is set back to KEY_ESCAPE
+    // in main.cpp
+    SetExitKey(0);
+
     // paddle positions
     int playerone = (SCREEN_HEIGHT / 2);
     int playertwo = (SCREEN_HEIGHT / 2);
@@ -134,6 +140,11 @@ void Games::twoPlayerPong(bool debugMode) {
 }
 
 void Games::onePlayerPong(bool debugMode) {
+    // set exit key to null so that when we want to exit this gamemode,
+    // we will only exit the gamemode and not the program.  Once we
+    // exit this function, the exit key is set back to KEY_ESCAPE
+    // in main.cpp
+    SetExitKey(0);
     // paddle positions
     int playerone = (SCREEN_HEIGHT / 2);
     int playertwo = (SCREEN_HEIGHT / 2);
