@@ -22,8 +22,8 @@ on:
 
 jobs:
   analyze:
-    name: Analyze
-    runs-on: [macos-latest, windows-latest]
+    name: Analyze macOS
+    runs-on: ${{ (matrix.language == 'cpp' && 'macos-latest') && ${{ (matrix.language == 'cpp' && 'windows-latest')
     timeout-minutes: ${{ (matrix.language == 'cpp' && 120) || 360 }}
     permissions:
       actions: read
