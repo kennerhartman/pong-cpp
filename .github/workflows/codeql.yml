@@ -42,7 +42,6 @@ jobs:
     # main.cpp, debug_version.cpp, image_to_hex.cpp
     - if: runner.os == 'macOS'
       run: |
-          clang --version
           make all
           make all mode=debug
           make macOSBundle
@@ -54,7 +53,6 @@ jobs:
     # main.cpp, debug_version.cpp, image_to_hex.cpp
     - if: runner.os == 'Windows'
       run: |
-          g++ --version
           make all
           make all mode=debug
           make image_to_hex
