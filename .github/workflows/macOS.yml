@@ -1,0 +1,41 @@
+name: macOS Workflow
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - '!src/game/**'
+  pull_request:
+    paths:
+      - 'src/**'
+      - '!src/game/**'
+
+jobs:
+  build:
+    permissions:
+      read-all
+      write-all
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@master
+    
+    - name: make all
+      run: |
+        clang --version
+        make all
+      
+    - name: make all mode=debug
+      run: |
+        clang --version
+        make all mode=debug
+      
+    - name: macOSBundle
+      run: |
+        clang --version
+        make macOSBundle
+      
+    - name: macOSBundle mode=debug
+      run: |
+        clang --version
+        make macOSBundle mode=debug
