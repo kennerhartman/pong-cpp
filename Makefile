@@ -28,7 +28,7 @@ dir_absent = $(directory)-
 # -mwindows disables console and opens only the GUI application (Windows only)
 # -static makes the executable transferable between computers (Windows only)
 # 'assets = resources/assets/pong.rc.data' (Windows only)
-ifeq ($(OS), Windows)
+ifeq ($(OS), Windows_NT)
 	CXX = g++
 	raylib = -static -mwindows -L lib/raylib/libraylib.a -lraylib -lopengl32 -lgdi32 -lwinmm
 	assets = resources/assets/pong.rc.data

@@ -20,9 +20,9 @@ Player two: Up arrow and down arrow
 
 # External API
 
-This software uses an external library called Raylib (See [LICENSE.md](LICENSE.md) for more information).  I have not included this library, or header files, in the source code and must be downloaded.
+This software uses an external library called Raylib (See [LICENSE.md](LICENSE.md) for more information).  This repository already includes the necessary library and header files.  If you want to download and compile the library yourself, here are the steps to do so:
 
-- [Download ZIP](https://github.com/raysan5/raylib/archive/refs/heads/master.zip)
+- [Download ZIP](https://github.com/raysan5/raylib/archive/refs/heads/master.zip) from raylib repo
 
 1. Unzip the contents of the ZIP
 2. From there, open an instance of a terminal and cd to the source directory of the unziped folder "raylib-master/src"
