@@ -10,13 +10,9 @@ on:
     - cron: '25 9 * * 0'
 
 jobs:
-  Analyze-Windows-CPP:
-      name: Analyze Windows
-      runs-on: ${{ (matrix.language == 'cpp' && 'windows-latest') 
-
-  Analyze-macOS-CPP:
-    name: Analyze macOS
-    runs-on: ${{ (matrix.language == 'cpp' && 'macos-latest') 
+  analyze:
+    name: Analyze Windows
+    runs-on: ${{ (matrix.language == 'cpp' && 'ubuntu-latest') 
       
     timeout-minutes: ${{ (matrix.language == 'cpp' && 120) || 360 }}
     permissions:
