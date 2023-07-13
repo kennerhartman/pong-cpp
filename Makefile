@@ -30,11 +30,11 @@ dir_absent = $(directory)-
 # 'assets = resources/assets/pong.rc.data' (Windows only)
 ifeq ($(OS), Windows_NT)
 	CXX = g++
-	raylib = -static -mwindows -L lib/* -lraylib -lopengl32 -lgdi32 -lwinmm
+	raylib = -static -mwindows -L lib\raylib\windows\* -lraylib -lopengl32 -lgdi32 -lwinmm
 	assets = resources/assets/pong.rc.data
 else
 	CXX = g++ -std=c++20
-	raylib = -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL lib/raylib/libraylib.a
+	raylib = -framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL lib/raylib/macos/libraylib.a
 endif
 
 myInclude = src/gui/gui.cpp src/game/game.cpp include/paddle/paddle.cpp
