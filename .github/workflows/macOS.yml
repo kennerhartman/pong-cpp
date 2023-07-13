@@ -18,9 +18,6 @@ on:
 
 jobs:
   build:
-    permissions:
-      read-all
-      write-all
     runs-on: macos-latest
     
     steps:
