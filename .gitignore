@@ -7,8 +7,8 @@
 
 # raylib
 
-/lib
-/include/raylib
+# /lib
+# /include/raylib
 
 # executables and app bundles
 
