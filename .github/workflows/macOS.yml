@@ -2,6 +2,8 @@ name: macOS Workflow
 
 on:
   push:
+    branches:
+      - 'kennerhartman-workflow-tests'
     paths:
       - 'src/**'
       - '!src/game/**'
