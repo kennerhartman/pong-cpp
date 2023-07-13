@@ -4,9 +4,12 @@
 //
 
 #include <string>
-#include <iostream>
+
+// my API
 #include "gui.hpp"
 #include "../game/game.hpp"
+
+// raylib API
 #include "../../include/raylib/raylib.h"
 
 // set screen dimensions

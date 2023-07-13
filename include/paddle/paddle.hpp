@@ -4,6 +4,7 @@
 //
 
 #ifndef _PADDLE_HPP
+#define _PADDLE_HPP
 
 #include <string>
 

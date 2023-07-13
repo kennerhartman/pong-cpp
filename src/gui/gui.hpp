@@ -4,6 +4,7 @@
 //
 
 #ifndef _GUI_HPP
+#define _GUI_HPP
 
 #include <string>
 
