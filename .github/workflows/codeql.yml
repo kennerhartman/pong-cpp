@@ -37,14 +37,27 @@ jobs:
         languages: ${{ matrix.language }}
         queries: +security-and-quality
 
+    # scan for C++ files, macOS; targets main C++ files in 
+    # /src; other C++ files that are called in it will be scanned;
+    # main.cpp, debug_version.cpp, image_to_hex.cpp
     - if: runner.os == 'macOS'
-      name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+      run: |
+          clang --version
+          make all
+          make all mode=debug
+          make macOSBundle
+          make macOSBundle mode=debug
+          make image_to_hex
 
+    # scan C++ files, Windows; targets main C++ files in 
+    # /src; other C++ files that are called in it will be scanned;
+    # main.cpp, debug_version.cpp, image_to_hex.cpp
     - if: runner.os == 'Windows'
       run: |
           g++ --version
           make all
+          make all mode=debug
+          make image_to_hex
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
