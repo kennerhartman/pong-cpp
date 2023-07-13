@@ -11,8 +11,11 @@ on:
 
 jobs:
   analyze:
-    name: Analyze
-    runs-on: ${{ (matrix.language == 'cpp' && matrix.os == 'macos-latest') || (matrix.language == 'cpp' && matrix.os == 'windows-latest') }}
+    name: Analyze Windows
+    runs-on: ${{ (matrix.language == 'cpp' && 'windows-latest') 
+
+    name: Analyze macOS
+    runs-on: ${{ (matrix.language == 'cpp' && 'macos-latest') 
       
     timeout-minutes: ${{ (matrix.language == 'cpp' && 120) || 360 }}
     permissions:
@@ -24,7 +27,6 @@ jobs:
       fail-fast: false
       matrix:
         language: [ 'cpp' ]
-        os: ['macos-latest', 'windows-latest']
 
     steps:
     - name: Checkout repository
