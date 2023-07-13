@@ -30,7 +30,7 @@ dir_absent = $(directory)-
 # 'assets = resources/assets/pong.rc.data' (Windows only)
 ifeq ($(OS), Windows_NT)
 	CXX = g++
-	raylib = -static -mwindows -L lib/raylib/libraylib.a -lraylib -lopengl32 -lgdi32 -lwinmm
+	raylib = -static -mwindows -L lib/* -lraylib -lopengl32 -lgdi32 -lwinmm
 	assets = resources/assets/pong.rc.data
 else
 	CXX = g++ -std=c++20
