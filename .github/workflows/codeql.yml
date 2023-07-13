@@ -10,10 +10,11 @@ on:
     - cron: '25 9 * * 0'
 
 jobs:
-  analyze:
-    name: Analyze Windows
-    runs-on: ${{ (matrix.language == 'cpp' && 'windows-latest') 
+  Analyze-Windows-CPP:
+      name: Analyze Windows
+      runs-on: ${{ (matrix.language == 'cpp' && 'windows-latest') 
 
+  Analyze-macOS-CPP:
     name: Analyze macOS
     runs-on: ${{ (matrix.language == 'cpp' && 'macos-latest') 
       
