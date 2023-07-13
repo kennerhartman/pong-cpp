@@ -25,6 +25,12 @@ dir_absent = $(directory)-
 # macOS throws errors if a standard is not defined
 # set the proper flags for 'raylib' for the proper platforms (Checks if Windows, else macOS).
 #
+# Windows and macOS compile different 'libraylib.a' library files.  I used to have
+# these files listed on .gitignore.  However, I have setup workflows which require
+# the libraries to be on Github and Windows and macOS generate different
+# 'libraylib.a' library files.  "lib/raylib/macos/libraylib.a" and
+# "lib\raylib\windows\*"
+#
 # -mwindows disables console and opens only the GUI application (Windows only)
 # -static makes the executable transferable between computers (Windows only)
 # 'assets = resources/assets/pong.rc.data' (Windows only)
