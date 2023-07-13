@@ -1,9 +1,13 @@
 name: macOS Workflow
 
 on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run workflow'
+        type: environment
+        required: true     
   push:
-    branches:
-      - 'master'
     paths:
       - 'src/**'
       - '!src/game/**'
