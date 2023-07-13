@@ -23,7 +23,7 @@ on:
 jobs:
   analyze:
     name: Analyze macOS
-    runs-on: ${{ (matrix.language == 'cpp' && 'macos-latest') && ${{ (matrix.language == 'cpp' && 'windows-latest') }}
+    runs-on: ${{ (matrix.language == 'cpp' && 'macos-latest' || matrix.language == 'cpp' && 'windows-latest')
     timeout-minutes: ${{ (matrix.language == 'cpp' && 120) || 360 }}
     permissions:
       actions: read
