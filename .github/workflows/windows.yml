@@ -1,0 +1,20 @@
+name: Windows Workflow
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@master
+    
+    - name: make all
+      run: |
+        g++ --version
+        make all
+      
+    - name: make all mode=debug
+      run: |
+        g++ --version
+        make all mode=debug
