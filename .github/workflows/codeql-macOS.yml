@@ -1,4 +1,4 @@
-name: "CodeQL"
+name: "CodeQL (macOS)"
 
 on:
   push:
