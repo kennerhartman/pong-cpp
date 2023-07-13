@@ -6,7 +6,7 @@ on:
       environment:
         description: 'Environment to run workflow'
         type: environment
-        required: true     
+        required: false     
   push:
     paths:
       - 'src/**'
