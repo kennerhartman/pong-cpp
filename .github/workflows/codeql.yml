@@ -1,4 +1,4 @@
-name: "CodeQL (Windows)"
+name: "CodeQL"
 
 on:
   push:
@@ -12,7 +12,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ${{ (matrix.language == 'cpp' && matrix.os == 'macos-latest') }} || ${{ (matrix.language == 'cpp' && matrix.os == 'windows-latest') }}
+    runs-on: ${{ (matrix.language == 'cpp' && matrix.os ) }}
       
     timeout-minutes: ${{ (matrix.language == 'cpp' && 120) || 360 }}
     permissions:
