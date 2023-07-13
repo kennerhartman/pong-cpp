@@ -4,6 +4,7 @@
 //
 
 #include <string>
+#include <math.h>
 
 // my API
 #include "gui.hpp"
@@ -49,25 +50,27 @@ void GUI::score(std::string player) {
 }
 
 void GUI::displayScore() {
+    // snprintf: (buffer, max_bytes_to_write, format, what_to_write_to_buffer)
+
     if (PLAYER_ONE_SCORE < 10) {
-        char score_text[8];
-        sprintf(score_text, "%i", PLAYER_ONE_SCORE);
+        char score_text[16];
+        snprintf(score_text, 12, "%i", PLAYER_ONE_SCORE);
         DrawText("0", (SCREEN_WIDTH / 5), (SCREEN_HEIGHT - SCREEN_HEIGHT) + 25, SCORE_TEXT_SIZE, WHITE);
         DrawText(score_text, (SCREEN_WIDTH / 5) + 35, (SCREEN_HEIGHT - SCREEN_HEIGHT) + 25, SCORE_TEXT_SIZE, WHITE);
     } else {
-        char score_text[8];
-        sprintf(score_text, "%i", PLAYER_ONE_SCORE);
+        char score_text[16];
+        snprintf(score_text, 12, "%i", PLAYER_ONE_SCORE);
         DrawText(score_text, (SCREEN_WIDTH / 5), (SCREEN_HEIGHT - SCREEN_HEIGHT) + 25, SCORE_TEXT_SIZE, WHITE);
     }
 
     if (PLAYER_TWO_SCORE < 10) {
-        char score_text[8];
-        sprintf(score_text, "%i", PLAYER_TWO_SCORE);
+        char score_text[16];
+        snprintf(score_text, 12, "%i", PLAYER_TWO_SCORE);
         DrawText("0", (SCREEN_WIDTH / 1.35), (SCREEN_HEIGHT - SCREEN_HEIGHT) + 25, SCORE_TEXT_SIZE, WHITE);
         DrawText(score_text, (SCREEN_WIDTH / 1.35) + 35, (SCREEN_HEIGHT - SCREEN_HEIGHT) + 25, SCORE_TEXT_SIZE, WHITE);
     } else {
-        char score_text[8];
-        sprintf(score_text, "%i", PLAYER_TWO_SCORE);
+        char score_text[16];
+        snprintf(score_text, 12, "%i", PLAYER_TWO_SCORE);
         DrawText(score_text, (SCREEN_WIDTH / 1.35), (SCREEN_HEIGHT - SCREEN_HEIGHT) + 25, SCORE_TEXT_SIZE, WHITE);
     }
 }
@@ -123,23 +126,27 @@ int GUI::menu(struct Texture button, int x_pos, int y_pos, std::string action, b
 
 bool GUI::debugMode(Rectangle pong, int pong_speed_y, bool debugModeIsOn) {
     if (debugModeIsOn) {
-        // pong speed
-        char pong_speed_text[16];
-        sprintf(pong_speed_text, "%d", pong_speed_y);
+        // snprintf: (buffer, max_bytes_to_write, format, what_to_write_to_buffer)
+        
+        // pong speed        
+        char pong_speed_buffer[12];
+        snprintf(pong_speed_buffer, 8, "%i", pong_speed_y);
         DrawText("Pong y speed: ", 5, SCREEN_HEIGHT - 75, 15, RED);
-        DrawText(pong_speed_text, 110, SCREEN_HEIGHT - 75, 15, RED);        
+        DrawText(pong_speed_buffer, 110, SCREEN_HEIGHT - 75, 15, RED);        
 
         // pong x position
-        char pong_x_pos[16];
-        sprintf(pong_x_pos, "%f", pong.x);
+        char pong_x_pos_buffer[12];
+        int pong_x_pos = round(pong.x);
+        snprintf(pong_x_pos_buffer, 8, "%i", pong_x_pos);
         DrawText("Pong x position: ", 5, SCREEN_HEIGHT - 50, 15, RED);
-        DrawText(pong_x_pos, 125, SCREEN_HEIGHT - 50, 15, RED);
+        DrawText(pong_x_pos_buffer, 125, SCREEN_HEIGHT - 50, 15, RED);
 
         // pong y position
-        char pong_y_pos[16];
-        sprintf(pong_y_pos, "%f", pong.y);
+        char pong_y_pos_buffer[12];
+        int pong_y_pos = round(pong.y);
+        snprintf(pong_y_pos_buffer, 8, "%i", pong_y_pos);
         DrawText("Pong y position: ", 5, SCREEN_HEIGHT - 25, 15, RED);
-        DrawText(pong_y_pos, 125, SCREEN_HEIGHT - 25, 15, RED);
+        DrawText(pong_y_pos_buffer, 125, SCREEN_HEIGHT - 25, 15, RED);
 
         // frame time   
         DrawFPS(SCREEN_WIDTH - 77, SCREEN_HEIGHT - 25);
