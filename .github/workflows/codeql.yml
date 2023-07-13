@@ -12,7 +12,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ${{ (matrix.language == 'cpp' && matrix.os) }}
+    runs-on: ${{ matrix.os && matrix.language == 'cpp' }}
       
     timeout-minutes: ${{ (matrix.language == 'cpp' && 120) || 360 }}
     permissions:
