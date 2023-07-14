@@ -6,6 +6,11 @@ on:
   pull_request:
     # The branches below must be a subset of the branches above
     branches: [ "master" ]
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Manually run CodeQL workflow'
+        required: false
   schedule:
     - cron: '25 9 * * 0'
 
